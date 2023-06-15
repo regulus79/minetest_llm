@@ -2,8 +2,15 @@ from aiohttp import web
 from urllib import parse
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-model = AutoModelForCausalLM.from_pretrained("facebook/opt-350m")
-tokenizer = AutoTokenizer.from_pretrained("facebook/opt-350m")
+
+###
+### Change this variable to the name of the text generation model you wish to use (ex. "gpt2" or "facebook/opt-350m")
+### The model name must match the name on huggingface.co
+###
+model_name = "gpt2"
+
+model = AutoModelForCausalLM.from_pretrained(model_name)
+tokenizer = AutoTokenizer.from_pretrained(model_name)
 print("====== Model Loaded ======")
 
 def is_float(n):
